@@ -285,6 +285,7 @@
         </div>
         <div class="chips-row" id="qchips">
           <div class="qchip" data-q="despido">¿Cuánto cuesta despedir a un trabajador?</div>
+          <div class="qchip" data-q="embargo">Me ha llegado un embargo, ¿cómo procedo?</div>
           <div class="qchip" data-q="alta">¿Qué necesito para dar de alta a alguien?</div>
           <div class="qchip" data-q="temporal">¿Cuándo tengo que avisar de un fin de contrato?</div>
           <div class="qchip" data-q="variables">¿Qué son las variables de la nómina?</div>
@@ -352,38 +353,38 @@
     <div class="sol-head fade">
       <div class="sol-num">03</div>
       <div>
-        <h2>Validador de seguros sociales antes de que salte la multa</h2>
-        <div class="sub">Compara los datos de vuestro A3 con lo comunicado a Seguridad Social y marca los descuadres <b>antes</b> de enviar — el error que hoy se caza a mano, cazado en segundos.</div>
+        <h2>Valida el fichero de bases antes de subirlo a Siltra</h2>
+        <div class="sub">Hoy generáis el fichero de bases en A3, lo subís a Siltra y esperáis <b>como mínimo un día</b> a que responda — y solo entonces sabéis si cuadra. Esto lo revisa <b>en el momento</b>, antes de subirlo: si algo no va a cuadrar, lo ves ya y lo corriges. Cuando Siltra responda, todo cuadra a la primera.</div>
         <div class="demo-note">Demo interactiva</div>
       </div>
     </div>
 
     <div class="demo-shell fade">
-      <div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="ttl">Validador de cuadre · Trabajador #0347</span></div>
+      <div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="ttl">Validación previa · Fichero de bases → Siltra</span></div>
       <div class="demo-body">
         <div class="val-grid">
           <div class="val-col">
-            <h4>Datos en A3 Nom</h4>
-            <div class="val-row"><span class="k">Tipo de contrato</span><span class="v">Indefinido (100)</span></div>
-            <div class="val-row"><span class="k">Grupo de cotización</span><span class="v">5</span></div>
-            <div class="val-row"><span class="k">Base de cotización</span><span class="v">1.980,00 €</span></div>
-            <div class="val-row"><span class="k">Días cotizados</span><span class="v">30</span></div>
+            <h4>Fichero de bases (generado en A3)</h4>
+            <div class="val-row"><span class="k">Trabajador #0347 · Tipo contrato</span><span class="v">Indefinido (100)</span></div>
+            <div class="val-row flag"><span class="k">Trabajador #0347 · Grupo cotización</span><span class="v">7 ⚠</span></div>
+            <div class="val-row"><span class="k">Trabajador #0348 · Base</span><span class="v">1.980,00 €</span></div>
+            <div class="val-row"><span class="k">Trabajador #0351 · Días cotizados</span><span class="v">30</span></div>
           </div>
           <div class="val-col">
-            <h4>Comunicado a Seg. Social</h4>
-            <div class="val-row"><span class="k">Tipo de contrato</span><span class="v">Indefinido (100)</span></div>
-            <div class="val-row flag"><span class="k">Grupo de cotización</span><span class="v">7 ⚠</span></div>
-            <div class="val-row"><span class="k">Base de cotización</span><span class="v">1.980,00 €</span></div>
-            <div class="val-row"><span class="k">Días cotizados</span><span class="v">30</span></div>
+            <h4>Datos registrados en Seg. Social</h4>
+            <div class="val-row"><span class="k">Trabajador #0347 · Tipo contrato</span><span class="v">Indefinido (100)</span></div>
+            <div class="val-row flag"><span class="k">Trabajador #0347 · Grupo cotización</span><span class="v">5 ⚠</span></div>
+            <div class="val-row"><span class="k">Trabajador #0348 · Base</span><span class="v">1.980,00 €</span></div>
+            <div class="val-row"><span class="k">Trabajador #0351 · Días cotizados</span><span class="v">30</span></div>
           </div>
         </div>
-        <button class="btn" id="val-btn" style="margin-top:20px;font-size:14px">Comprobar cuadre</button>
+        <button class="btn" id="val-btn" style="margin-top:20px;font-size:14px">Validar antes de subir a Siltra</button>
         <div class="val-result bad" id="val-result">
-          <b>1 descuadre detectado.</b> El grupo de cotización no coincide (A3: 5 · SS: 7). Con este dato, el seguro social <b>no se recibiría</b>. Corrígelo antes de enviar y evitas el rechazo y la posible sanción por presentar fuera de plazo.
+          <b>1 descuadre detectado en el fichero.</b> El grupo de cotización del trabajador #0347 no coincide (fichero: 7 · Seg. Social: 5). Si subieras este fichero a Siltra, mañana te lo devolvería sin cuadrar y habrías perdido un día. Corrígelo ahora, súbelo, y la respuesta de Siltra llegará cuadrada a la primera.
         </div>
       </div>
     </div>
-    <p style="color:var(--mut2);font-size:13px;margin-top:16px">En real, cruza el fichero de A3 con la notificación de Siltra y revisa toda la plantilla de golpe, no trabajador a trabajador.</p>
+    <p style="color:var(--mut2);font-size:13px;margin-top:16px">En real, lee el fichero de bases que genera A3, lo contrasta con los datos registrados en Seguridad Social y revisa toda la plantilla de golpe — el paso que hoy solo confirma Siltra un día después, resuelto antes de subir.</p>
   </div>
 </section>
 
@@ -520,6 +521,7 @@ const answers = {
   despido: "Depende del tipo de despido:\n\n<b>• Improcedente:</b> 33 días de salario por año trabajado (máx. 24 mensualidades). Para contratos anteriores a feb-2012, 45 días hasta esa fecha.\n<b>• Objetivo/procedente:</b> 20 días por año (máx. 12 mensualidades).\n<b>• Disciplinario procedente:</b> sin indemnización.\n\nDame el salario y la antigüedad y te doy la cifra exacta.",
   alta: "Para dar de alta a un trabajador necesito:\n\n<b>1.</b> DNI/NIE y número de la Seguridad Social\n<b>2.</b> Tipo de contrato y grupo de cotización\n<b>3.</b> Salario y jornada\n<b>4.</b> Fecha de inicio\n<b>5.</b> Convenio aplicable\n\nEl alta hay que comunicarla <b>antes</b> del inicio de la actividad. Pásame los datos y lo dejo listo.",
   temporal: "El preaviso de fin de contrato temporal es:\n\n<b>• Contratos de menos de 1 año:</b> no hay preaviso obligatorio, pero se recomienda avisar.\n<b>• Contratos de 1 año o más:</b> <b>15 días</b> de preaviso. Si no se avisa, se paga el equivalente en salario.\n\nAl finalizar corresponde la indemnización de <b>12 días por año</b> trabajado.",
+  embargo: "Tranquilo, os guío. Cuando os reenviamos una diligencia de embargo, os lo dejamos en claro:\n\n<b>1.</b> Os digo <b>de qué entidad</b> procede el embargo.\n<b>2.</b> Solo necesito que me confirméis una cosa: <b>¿tenéis relación comercial o laboral con esa empresa?</b>\n<b>3.</b> Con vuestra respuesta, <b>el despacho contesta por vosotros</b> a la administración dentro de plazo.\n\nNo tenéis que saber cómo se responde: confirmáis el dato y nosotros nos ocupamos del resto.",
   variables: "Las variables son los conceptos que cambian cada mes y hay que enviarnos antes del cierre:\n\n<b>•</b> Horas extra\n<b>•</b> Ausencias, bajas y permisos\n<b>•</b> Altas y bajas de personal\n<b>•</b> Comisiones, pluses, dietas\n\nCuanto antes lleguen, antes salen las nóminas del mes sin agobios.",
   default: "Buena pregunta. En la versión real, el asistente responde con los criterios y convenios concretos de Firmus Advisors. Para esta demo tengo cargadas las dudas más habituales — prueba con una de las sugerencias de arriba (despidos, altas, fin de contrato o variables)."
 };
@@ -534,6 +536,7 @@ function add(text, who){
 function resolve(q){
   const t = q.toLowerCase();
   if(/despid|despedir|indemniz|finiquit/.test(t)) return answers.despido;
+  if(/embarg|diligencia|traba/.test(t)) return answers.embargo;
   if(/alta|contratar|dar de alta|nuevo trabajador|nueva/.test(t)) return answers.alta;
   if(/temporal|fin de contrato|preaviso|renov|vence/.test(t)) return answers.temporal;
   if(/variable|hora extra|ausencia|nómina|nomina/.test(t)) return answers.variables;
