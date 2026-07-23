@@ -188,6 +188,7 @@
   .honest b{color:var(--ink)}
   footer{background:var(--slate);padding:36px 0;color:rgba(255,255,255,.45);font-size:13px;text-align:center}
   footer img{height:26px;opacity:.85;margin-bottom:12px}
+  @media(max-width:640px){.priv-grid{grid-template-columns:1fr !important}}
   .fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
   .fade.in{opacity:1;transform:none}
 </style>
@@ -206,6 +207,7 @@
       <a href="#recogida">Recogida</a>
       <a href="#validador">Validador</a>
       <a href="#convenios">Convenios</a>
+      <a href="#privacidad">Datos</a>
       <a href="#hablar">Hablar</a>
     </div>
   </div>
@@ -441,6 +443,39 @@
   </div>
 </section>
 
+<!-- PRIVACIDAD -->
+<section id="privacidad" style="background:var(--slate);color:#fff">
+  <div class="wrap">
+    <div class="lead-block fade" style="max-width:64ch">
+      <div class="eyebrow" style="color:var(--bronze-soft)">Protección de datos</div>
+      <h2 style="color:#fff">Los datos de vuestros clientes no entran en ninguna IA.</h2>
+      <p style="color:rgba(255,255,255,.72)">Es la primera pregunta de cualquier despacho serio, y la respuesta es tranquila: la mayor parte del sistema es software de toda la vida, no inteligencia artificial. Y lo que sí la usa, está pensado para que ni un dato personal salga de donde tiene que estar.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px" class="priv-grid">
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:14px;padding:26px 24px">
+        <div style="font-size:22px;margin-bottom:12px">🔒</div>
+        <h3 style="color:#fff;font-size:18px;margin-bottom:8px">El validador y el cálculo de convenios no usan IA</h3>
+        <p style="color:rgba(255,255,255,.65);font-size:14px">Son cálculo puro sobre vuestros propios ficheros. Comparan y suman, como una hoja de cálculo muy lista. Los datos no viajan a ningún modelo — se quedan en vuestros sistemas.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:14px;padding:26px 24px">
+        <div style="font-size:22px;margin-bottom:12px">🇪🇺</div>
+        <h3 style="color:#fff;font-size:18px;margin-bottom:8px">La recogida solo mueve lo que el cliente rellena</h3>
+        <p style="color:rgba(255,255,255,.65);font-size:14px">Los formularios de variables funcionan cifrados y en servidores dentro de la UE, con contrato de encargado del tratamiento conforme al RGPD. Sin IA de por medio.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:14px;padding:26px 24px">
+        <div style="font-size:22px;margin-bottom:12px">💬</div>
+        <h3 style="color:#fff;font-size:18px;margin-bottom:8px">El asistente responde con criterio, no con datos personales</h3>
+        <p style="color:rgba(255,255,255,.65);font-size:14px">Contesta dudas generales (qué cuesta un despido, cómo tramitar un alta). No necesita ni ve los datos de vuestros trabajadores. Puede incluso funcionar en local, en vuestros propios equipos, sin salir a internet.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:14px;padding:26px 24px">
+        <div style="font-size:22px;margin-bottom:12px">🚫</div>
+        <h3 style="color:#fff;font-size:18px;margin-bottom:8px">Nada se usa para entrenar modelos</h3>
+        <p style="color:rgba(255,255,255,.65);font-size:14px">Ningún dato vuestro ni de vuestros clientes alimenta ninguna IA. Ni ahora ni nunca. Lo dejamos por escrito en el contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CLOSE -->
 <section class="close" id="hablar">
   <div class="wrap">
@@ -462,6 +497,7 @@
       </div>
     </div>
     <p style="color:var(--mut2);font-size:12.5px;margin-top:14px">Estimación conservadora para un despacho con varias decenas de empresas cliente. La afinamos con vuestros números en la primera conversación.</p>
+    <div style="max-width:620px;margin:34px auto 0;font-size:15.5px;color:var(--mut)">Esto es un punto de partida, construido con lo que se repite en cualquier despacho laboral. La versión que de verdad os encaja sale de <b style="color:var(--ink)">sentarnos media hora con quien conoce Firmus por dentro</b> y ajustarla a cómo trabajáis vosotros — no dos despachos hacen las cosas igual.</div>
     <div class="cta" style="justify-content:center;margin-top:32px;display:flex">
       <a href="mailto:oriol.fored@gmail.com?subject=Automatización de procesos en Firmus — hablarlo" class="btn">Hablémoslo →</a>
     </div>
