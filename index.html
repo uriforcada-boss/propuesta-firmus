@@ -207,6 +207,7 @@
       <a href="#recogida">Recogida</a>
       <a href="#validador">Validador</a>
       <a href="#convenios">Convenios</a>
+      <a href="#envio">Nóminas</a>
       <a href="#privacidad">Datos</a>
       <a href="#hablar">Hablar</a>
     </div>
@@ -444,6 +445,43 @@
   </div>
 </section>
 
+<section class="sol" id="envio">
+  <div class="wrap">
+    <div class="sol-head fade">
+      <div class="sol-num">05</div>
+      <div>
+        <h2>Las nóminas, repartidas solas</h2>
+        <div class="sub">Calculada la nómina, queda lo tonto: partir el PDF que saca A3, buscar a quién va cada una y mandarlas de una en una. Todos los meses, por cada empresa. Aquí se hace en un clic — y cada nómina sale protegida con su contraseña.</div>
+        <div class="demo-note">Demo interactiva</div>
+      </div>
+    </div>
+
+    <div class="demo-shell fade">
+      <div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="ttl">Envío de nóminas · Julio 2026</span></div>
+      <div class="demo-body">
+        <div class="subtle">1 · Fichero recibido de A3 Nom</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--paper2);max-width:560px">
+          <div style="font-size:22px">📄</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:14px">nominas_julio_2026.pdf</div>
+            <div style="color:var(--mut2);font-size:12.5px">12 páginas · 12 trabajadores</div>
+          </div>
+        </div>
+        <button class="btn" id="env-btn" style="margin-top:16px;font-size:14px">Partir y enviar a cada trabajador</button>
+
+        <div id="env-out" style="display:none;margin-top:22px">
+          <div class="subtle">2 · Envíos</div>
+          <div id="env-list" style="display:flex;flex-direction:column;gap:6px"></div>
+          <div id="env-done" style="display:none;margin-top:16px;padding:14px;border-radius:10px;background:rgba(35,164,85,.07);border:1px solid rgba(35,164,85,.25);color:var(--good);font-size:13.5px;font-weight:600">
+            ✓ 11 nóminas enviadas y protegidas con contraseña. 1 incidencia detectada y separada — nadie se entera un mes después.
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--mut2);font-size:13px;margin-top:16px">Demo con nombres de ejemplo. En real: parte el PDF de A3 por trabajador, lo cruza con sus destinatarios, cifra cada archivo con su DNI y envía desde vuestro Outlook, dejando registro de qué salió y qué falló.</p>
+  </div>
+</section>
+
 <!-- PRIVACIDAD -->
 <section id="privacidad" style="background:var(--slate);color:#fff">
   <div class="wrap">
@@ -599,6 +637,54 @@ document.getElementById('conv-btn').addEventListener('click',()=>{
 document.getElementById('val-btn').addEventListener('click',()=>{
   document.getElementById('val-result').style.display='block';
   document.getElementById('val-result').scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+// ---------- Demo 5: envío de nóminas ----------
+document.getElementById('env-btn').addEventListener('click',function(){
+  const btn = this;
+  if (btn.disabled) return;
+  btn.disabled = true; btn.style.opacity = .55;
+  const gente = [
+    ['Marta Ruiz Peña','m.ruiz@','ok'],
+    ['Jordi Serra Vila','j.serra@','ok'],
+    ['Ana Molina Gil','a.molina@','ok'],
+    ['Iván Torres Sanz','i.torres@','ok'],
+    ['Laura Prat Roca','l.prat@','ok'],
+    ['Sergio Díaz Mor','s.diaz@','ok'],
+    ['Nuria Camps Bosch','n.camps@','ok'],
+    ['Pau Ferrer Llop','—','falta'],
+    ['Elena Ortiz Vega','e.ortiz@','ok'],
+    ['Marc Soler Puig','m.soler@','ok'],
+    ['Rosa Gil Fabra','r.gil@','ok'],
+    ['David Nadal Rius','d.nadal@','ok']
+  ];
+  const list = document.getElementById('env-list');
+  list.innerHTML = '';
+  document.getElementById('env-done').style.display = 'none';
+  const out = document.getElementById('env-out');
+  out.style.display = 'block';
+  out.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  gente.forEach((g,i)=>{
+    setTimeout(()=>{
+      const falla = g[2] === 'falta';
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid '
+        + (falla?'rgba(214,138,26,.35)':'var(--line)')
+        + ';border-radius:8px;background:' + (falla?'rgba(214,138,26,.06)':'var(--paper2)')
+        + ';font-size:13.5px;opacity:0;transition:opacity .25s ease';
+      row.innerHTML = '<span style="font-size:14px">'+(falla?'⚠️':'✓')+'</span>'
+        + '<span style="flex:1;min-width:0;font-weight:600">'+g[0]+'</span>'
+        + '<span style="color:var(--mut2);font-size:12.5px">'
+        + (falla ? 'sin email — pendiente de revisar' : 'enviada · PDF protegido')
+        + '</span>';
+      list.appendChild(row);
+      requestAnimationFrame(()=>{row.style.opacity=1;});
+      if (i === gente.length-1) {
+        setTimeout(()=>{ document.getElementById('env-done').style.display='block'; }, 260);
+      }
+    }, 150 + i*180);
+  });
 });
 
 // ---------- reveal on scroll ----------
